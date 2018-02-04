@@ -63,18 +63,46 @@ public class professor {
 		lblNewLabel.setForeground(Color.BLACK);
 		
 		JButton addPro = new JButton("เพิ่มอาจารย์");
+		addPro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//page addProfessor
+				P_addProfessor addPro = new P_addProfessor();
+				addPro.addProfessor();
+			}
+		});
 		addPro.setFont(new Font("Angsana New", Font.BOLD, 20));
 		addPro.setForeground(Color.BLACK);
 		
 		JButton showPro = new JButton("เรียกดู/แก้ไข อาจารย์");
+		showPro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//page showProfessor
+				P_showProfessor showPro = new P_showProfessor();
+				showPro.showProfessor();
+			}
+		});
 		showPro.setForeground(Color.BLACK);
 		showPro.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
 		JButton addTimePro = new JButton("เพิ่มเวลาว่าง");
+		addTimePro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//page addTimeProfessor
+				P_addTimeProfessor showPro = new P_addTimeProfessor();
+				showPro.addTimeProfessor();
+			}
+		});
 		addTimePro.setForeground(Color.BLACK);
 		addTimePro.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
 		JButton showTimePro = new JButton("เรียกดู/แก้ไข เวลาว่าง");
+		showTimePro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//page showTimeProfessor
+				P_showTimeProfessor showPro = new P_showTimeProfessor();
+				showPro.showTimeProfessor();
+			}
+		});
 		showTimePro.setForeground(Color.BLACK);
 		showTimePro.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
