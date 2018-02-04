@@ -7,10 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class room {
 
@@ -67,6 +72,13 @@ public class room {
 		button_2.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
 		JButton button_3 = new JButton("กลับหน้าหลัก");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//back index
+				index index = new index();
+				index.main(null);
+			}
+		});
 		button_3.setForeground(Color.BLACK);
 		button_3.setFont(new Font("Angsana New", Font.BOLD, 20));
 		button_3.setBackground(Color.WHITE);

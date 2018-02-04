@@ -7,11 +7,16 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class timetable {
 
@@ -64,6 +69,13 @@ public class timetable {
 		button_1.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
 		JButton button_2 = new JButton("\u0E01\u0E25\u0E31\u0E1A\u0E2B\u0E19\u0E49\u0E32\u0E2B\u0E25\u0E31\u0E01");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//back index
+				index index = new index();
+				index.main(null);
+			}
+		});
 		button_2.setForeground(Color.BLACK);
 		button_2.setFont(new Font("Angsana New", Font.BOLD, 20));
 		button_2.setBackground(Color.WHITE);

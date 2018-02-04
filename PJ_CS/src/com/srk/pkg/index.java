@@ -17,7 +17,6 @@ import java.awt.Window;
 public class index {
 
 	private JFrame frame;
-
 	/**
 	 * Launch the application.
 	 */
@@ -38,6 +37,7 @@ public class index {
 	 * Create the application.
 	 */
 	public index() {
+		//start
 		initialize();
 	}
 
@@ -139,7 +139,6 @@ public class index {
 		
 		frame.getContentPane().setLayout(groupLayout);
 	}
-
 
 
 }

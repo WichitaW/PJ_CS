@@ -25,6 +25,7 @@ public class professor {
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void professor() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,6 +42,7 @@ public class professor {
 	/**
 	 * Create the application.
 	 */
+
 	public professor() {
 		initialize();
 	}
@@ -81,7 +83,7 @@ public class professor {
 			public void actionPerformed(ActionEvent e) {
 				//back index
 				index index = new index();
-				index.index();
+				index.main(null);
 			}
 		});
 		button_3.setBackground(Color.WHITE);
@@ -128,4 +130,5 @@ public class professor {
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
+
 }
