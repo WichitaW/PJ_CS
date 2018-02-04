@@ -59,29 +59,29 @@ public class room {
 		label.setForeground(Color.BLACK);
 		label.setFont(new Font("Angsana New", Font.BOLD, 26));
 		
-		JButton button = new JButton("เพิ่ม");
-		button.setForeground(Color.BLACK);
-		button.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton addRoom = new JButton("เพิ่ม");
+		addRoom.setForeground(Color.BLACK);
+		addRoom.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
-		JButton button_1 = new JButton("เรียกดู/แก้ไข");
-		button_1.setForeground(Color.BLACK);
-		button_1.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton showRoom = new JButton("เรียกดู/แก้ไข");
+		showRoom.setForeground(Color.BLACK);
+		showRoom.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
-		JButton button_2 = new JButton("บันทึกการใช้ห้อง");
-		button_2.setForeground(Color.BLACK);
-		button_2.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton saveRoom = new JButton("บันทึกการใช้ห้อง");
+		saveRoom.setForeground(Color.BLACK);
+		saveRoom.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
-		JButton button_3 = new JButton("กลับหน้าหลัก");
-		button_3.addActionListener(new ActionListener() {
+		JButton backhome = new JButton("กลับหน้าหลัก");
+		backhome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//back index
 				index index = new index();
 				index.main(null);
 			}
 		});
-		button_3.setForeground(Color.BLACK);
-		button_3.setFont(new Font("Angsana New", Font.BOLD, 20));
-		button_3.setBackground(Color.WHITE);
+		backhome.setForeground(Color.BLACK);
+		backhome.setFont(new Font("Angsana New", Font.BOLD, 20));
+		backhome.setBackground(Color.WHITE);
 
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -94,10 +94,10 @@ public class room {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(241)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(showRoom, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
+								.addComponent(addRoom, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
+								.addComponent(saveRoom, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
+								.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(14, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -106,13 +106,13 @@ public class room {
 					.addGap(64)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addGap(51)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addComponent(addRoom, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addComponent(showRoom, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addComponent(saveRoom, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addGap(53)
-					.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(80, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);

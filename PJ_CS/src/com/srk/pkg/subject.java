@@ -59,25 +59,25 @@ public class subject {
 		label.setForeground(Color.BLACK);
 		label.setFont(new Font("Angsana New", Font.BOLD, 26));
 		
-		JButton button = new JButton("เพิ่ม");
-		button.setForeground(Color.BLACK);
-		button.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton addSubject = new JButton("เพิ่ม");
+		addSubject.setForeground(Color.BLACK);
+		addSubject.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
-		JButton button_1 = new JButton("เรียกดู/แก้ไข");
-		button_1.setForeground(Color.BLACK);
-		button_1.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton showSubject = new JButton("เรียกดู/แก้ไข");
+		showSubject.setForeground(Color.BLACK);
+		showSubject.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
-		JButton button_2 = new JButton("กลับหน้าหลัก");
-		button_2.addActionListener(new ActionListener() {
+		JButton backhome = new JButton("กลับหน้าหลัก");
+		backhome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//back index
 				index index = new index();
 				index.main(null);
 			}
 		});
-		button_2.setForeground(Color.BLACK);
-		button_2.setFont(new Font("Angsana New", Font.BOLD, 20));
-		button_2.setBackground(Color.WHITE);
+		backhome.setForeground(Color.BLACK);
+		backhome.setFont(new Font("Angsana New", Font.BOLD, 20));
+		backhome.setBackground(Color.WHITE);
 		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -91,11 +91,11 @@ public class subject {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(button_1, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-								.addComponent(button_2, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+								.addComponent(showSubject, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+								.addComponent(backhome, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
 							.addGap(240))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(button, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+							.addComponent(addSubject, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
 							.addGap(240))))
 		);
 		groupLayout.setVerticalGroup(
@@ -104,11 +104,11 @@ public class subject {
 					.addGap(103)
 					.addComponent(label, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
 					.addGap(60)
-					.addComponent(button, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addComponent(addSubject, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
 					.addGap(28)
-					.addComponent(button_1, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addComponent(showSubject, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
 					.addGap(60)
-					.addComponent(button_2, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+					.addComponent(backhome, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
 					.addGap(71))
 		);
 		frame.getContentPane().setLayout(groupLayout);

@@ -62,33 +62,33 @@ public class professor {
 		lblNewLabel.setFont(new Font("Angsana New", Font.BOLD, 26));
 		lblNewLabel.setForeground(Color.BLACK);
 		
-		JButton btnNewButton = new JButton("เพิ่มอาจารย์");
-		btnNewButton.setFont(new Font("Angsana New", Font.BOLD, 20));
-		btnNewButton.setForeground(Color.BLACK);
+		JButton addPro = new JButton("เพิ่มอาจารย์");
+		addPro.setFont(new Font("Angsana New", Font.BOLD, 20));
+		addPro.setForeground(Color.BLACK);
 		
-		JButton button = new JButton("เรียกดู/แก้ไข อาจารย์");
-		button.setForeground(Color.BLACK);
-		button.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton showPro = new JButton("เรียกดู/แก้ไข อาจารย์");
+		showPro.setForeground(Color.BLACK);
+		showPro.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
-		JButton button_1 = new JButton("เพิ่มเวลาว่าง");
-		button_1.setForeground(Color.BLACK);
-		button_1.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton addTimePro = new JButton("เพิ่มเวลาว่าง");
+		addTimePro.setForeground(Color.BLACK);
+		addTimePro.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
-		JButton button_2 = new JButton("เรียกดู/แก้ไข เวลาว่าง");
-		button_2.setForeground(Color.BLACK);
-		button_2.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton showTimePro = new JButton("เรียกดู/แก้ไข เวลาว่าง");
+		showTimePro.setForeground(Color.BLACK);
+		showTimePro.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
-		JButton button_3 = new JButton("กลับหน้าหลัก");
-		button_3.addActionListener(new ActionListener() {
+		JButton backhome = new JButton("กลับหน้าหลัก");
+		backhome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//back index
 				index index = new index();
 				index.main(null);
 			}
 		});
-		button_3.setBackground(Color.WHITE);
-		button_3.setForeground(Color.BLACK);
-		button_3.setFont(new Font("Angsana New", Font.BOLD, 20));
+		backhome.setBackground(Color.WHITE);
+		backhome.setForeground(Color.BLACK);
+		backhome.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -101,14 +101,14 @@ public class professor {
 					.addGap(238)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+							.addComponent(addPro, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
 							.addGap(243))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(button_3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-								.addComponent(button_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-								.addComponent(button_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-								.addComponent(button, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+								.addComponent(backhome, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+								.addComponent(showTimePro, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+								.addComponent(addTimePro, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+								.addComponent(showPro, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
 							.addGap(243))))
 		);
 		groupLayout.setVerticalGroup(
@@ -117,15 +117,15 @@ public class professor {
 					.addGap(48)
 					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
 					.addGap(46)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addComponent(addPro, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addComponent(showPro, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addComponent(addTimePro, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(button_2, GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+					.addComponent(showTimePro, GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
 					.addGap(51)
-					.addComponent(button_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(backhome, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(42))
 		);
 		frame.getContentPane().setLayout(groupLayout);

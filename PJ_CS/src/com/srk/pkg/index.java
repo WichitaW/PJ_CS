@@ -52,10 +52,10 @@ public class index {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//button
-		JButton button = new JButton("จัดการอาจารย์");
-		button.setFont(new Font("Angsana New", Font.BOLD, 26));
-		button.setForeground(Color.BLACK);
-		button.addActionListener(new ActionListener() {
+		JButton professor = new JButton("จัดการอาจารย์");
+		professor.setFont(new Font("Angsana New", Font.BOLD, 26));
+		professor.setForeground(Color.BLACK);
+		professor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//action professor
 				professor profes = new professor();
@@ -63,10 +63,10 @@ public class index {
 			}
 		});
 		
-		JButton button_1 = new JButton("จัดการนักศึกษา");
-		button_1.setFont(new Font("Angsana New", Font.BOLD, 26));
-		button_1.setForeground(Color.BLACK);
-		button_1.addActionListener(new ActionListener() {
+		JButton student = new JButton("จัดการนักศึกษา");
+		student.setFont(new Font("Angsana New", Font.BOLD, 26));
+		student.setForeground(Color.BLACK);
+		student.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//action student
 				student stu = new student();
@@ -74,10 +74,10 @@ public class index {
 			}
 		});
 		
-		JButton button_2 = new JButton("จัดการรายวิชา");
-		button_2.setFont(new Font("Angsana New", Font.BOLD, 26));
-		button_2.setForeground(Color.BLACK);
-		button_2.addActionListener(new ActionListener() {
+		JButton subject = new JButton("จัดการรายวิชา");
+		subject.setFont(new Font("Angsana New", Font.BOLD, 26));
+		subject.setForeground(Color.BLACK);
+		subject.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//action subject
 				subject sj = new subject();
@@ -85,21 +85,21 @@ public class index {
 			}
 		});
 		
-		JButton button_3 = new JButton("จัดการห้องเรียน");
-		button_3.setFont(new Font("Angsana New", Font.BOLD, 26));
-		button_3.setForeground(Color.BLACK);
-		button_3.addActionListener(new ActionListener() {
+		JButton room = new JButton("จัดการห้องเรียน");
+		room.setFont(new Font("Angsana New", Font.BOLD, 26));
+		room.setForeground(Color.BLACK);
+		room.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//action room
-				room room = new room();
-				room.room();
+				room r = new room();
+				r.room();
 			}
 		});
 		
-		JButton button_4 = new JButton("จัดตารางสอน");
-		button_4.setFont(new Font("Angsana New", Font.BOLD, 26));
-		button_4.setForeground(Color.BLACK);
-		button_4.addActionListener(new ActionListener() {
+		JButton timetable = new JButton("จัดตารางสอน");
+		timetable.setFont(new Font("Angsana New", Font.BOLD, 26));
+		timetable.setForeground(Color.BLACK);
+		timetable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//action timetable
 				timetable tTable = new timetable();
@@ -114,26 +114,26 @@ public class index {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(153)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(button_4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
-						.addComponent(button_3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
-						.addComponent(button_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
-						.addComponent(button_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
-						.addComponent(button, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE))
+						.addComponent(timetable, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+						.addComponent(room, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+						.addComponent(subject, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+						.addComponent(student, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+						.addComponent(professor, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE))
 					.addGap(134))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(84)
-					.addComponent(button, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+					.addComponent(professor, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(button_1, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+					.addComponent(student, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(button_2, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+					.addComponent(subject, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(button_3, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+					.addComponent(room, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
 					.addGap(18)
-					.addComponent(button_4, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+					.addComponent(timetable, GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
 					.addGap(86))
 		);
 		
