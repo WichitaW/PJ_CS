@@ -1,0 +1,131 @@
+package com.srk.pkg;
+
+import java.awt.EventQueue;
+import java.awt.Toolkit;
+
+import javax.swing.JFrame;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
+public class professor {
+
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void professor() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					professor window = new professor();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public professor() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/srk/img/large_PSU_logo.gif")));
+		frame.setTitle("ระบบจัดตารางสอนของคณาจารย์ ภาควิชาวิทยาการคอมพิวเตอร์");
+		frame.setBounds(300, 100, 700, 500);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JLabel lblNewLabel = new JLabel("ข้อมูลอาจารย์");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Angsana New", Font.BOLD, 26));
+		lblNewLabel.setForeground(Color.BLACK);
+		
+		JButton btnNewButton = new JButton("เพิ่มอาจารย์");
+		btnNewButton.setFont(new Font("Angsana New", Font.BOLD, 20));
+		btnNewButton.setForeground(Color.BLACK);
+		
+		JButton button = new JButton("เรียกดู/แก้ไข อาจารย์");
+		button.setForeground(Color.BLACK);
+		button.setFont(new Font("Angsana New", Font.BOLD, 20));
+		
+		JButton button_1 = new JButton("เพิ่มเวลาว่าง");
+		button_1.setForeground(Color.BLACK);
+		button_1.setFont(new Font("Angsana New", Font.BOLD, 20));
+		
+		JButton button_2 = new JButton("เรียกดู/แก้ไข เวลาว่าง");
+		button_2.setForeground(Color.BLACK);
+		button_2.setFont(new Font("Angsana New", Font.BOLD, 20));
+		
+		JButton button_3 = new JButton("กลับหน้าหลัก");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//back index
+				index index = new index();
+				index.index();
+			}
+		});
+		button_3.setBackground(Color.WHITE);
+		button_3.setForeground(Color.BLACK);
+		button_3.setFont(new Font("Angsana New", Font.BOLD, 20));
+		
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(238)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+							.addGap(243))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(button_3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+								.addComponent(button_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+								.addComponent(button_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+								.addComponent(button, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+							.addGap(243))))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(48)
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+					.addGap(46)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(button, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(button_2, GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+					.addGap(51)
+					.addComponent(button_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(42))
+		);
+		frame.getContentPane().setLayout(groupLayout);
+	}
+}
