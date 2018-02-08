@@ -46,13 +46,13 @@ public class index {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/srk/img/large_PSU_logo.gif")));
-		frame.setTitle("�к��Ѵ���ҧ�͹�ͧ��Ҩ���� �Ҥ�Ԫ��Է�ҡ�ä���������");
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/pj/img/large_PSU_logo.gif")));
+		frame.setTitle("ระบบจัดตารางสอนของคณาจารย์ ภาควิชาวิทยาการคอมพิวเตอร์");
 		frame.setBounds(300, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//button
-		JButton professor = new JButton("�Ѵ����Ҩ����");
+		JButton professor = new JButton("จัดการอาจารย์");
 		professor.setFont(new Font("Angsana New", Font.BOLD, 26));
 		professor.setForeground(Color.BLACK);
 		professor.addActionListener(new ActionListener() {
@@ -63,7 +63,7 @@ public class index {
 			}
 		});
 		
-		JButton student = new JButton("�Ѵ��ùѡ�֡��");
+		JButton student = new JButton("จัดการนักศึกษา");
 		student.setFont(new Font("Angsana New", Font.BOLD, 26));
 		student.setForeground(Color.BLACK);
 		student.addActionListener(new ActionListener() {
@@ -74,7 +74,7 @@ public class index {
 			}
 		});
 		
-		JButton subject = new JButton("�Ѵ�������Ԫ�");
+		JButton subject = new JButton("จัดการรายวิชา");
 		subject.setFont(new Font("Angsana New", Font.BOLD, 26));
 		subject.setForeground(Color.BLACK);
 		subject.addActionListener(new ActionListener() {
@@ -85,7 +85,7 @@ public class index {
 			}
 		});
 		
-		JButton room = new JButton("�Ѵ�����ͧ���¹");
+		JButton room = new JButton("จัดการห้องเรียน");
 		room.setFont(new Font("Angsana New", Font.BOLD, 26));
 		room.setForeground(Color.BLACK);
 		room.addActionListener(new ActionListener() {
@@ -96,7 +96,7 @@ public class index {
 			}
 		});
 		
-		JButton timetable = new JButton("�Ѵ���ҧ�͹");
+		JButton timetable = new JButton("จัดตารางสอน");
 		timetable.setFont(new Font("Angsana New", Font.BOLD, 26));
 		timetable.setForeground(Color.BLACK);
 		timetable.addActionListener(new ActionListener() {
