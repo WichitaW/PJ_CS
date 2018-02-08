@@ -1,4 +1,4 @@
-package com.srk.pkg;
+package com.pj.pkg;
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -13,23 +13,22 @@ import java.awt.Color;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class timetable {
+public class room {
 
 	private JFrame frame;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void timetable() {
+	public static void room() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					timetable window = new timetable();
+					room window = new room();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +40,7 @@ public class timetable {
 	/**
 	 * Create the application.
 	 */
-	public timetable() {
+	public room() {
 		initialize();
 	}
 
@@ -55,18 +54,22 @@ public class timetable {
 		frame.setBounds(300, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel label = new JLabel("จัดตารางสอน");
+		JLabel label = new JLabel("จัดการห้องเรียน");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.BLACK);
 		label.setFont(new Font("Angsana New", Font.BOLD, 26));
 		
-		JButton addTimeTable = new JButton("เพิ่ม");
-		addTimeTable.setForeground(Color.BLACK);
-		addTimeTable.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton addRoom = new JButton("เพิ่ม");
+		addRoom.setForeground(Color.BLACK);
+		addRoom.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
-		JButton showTimeTable = new JButton("เรียกดู/แก้ไข");
-		showTimeTable.setForeground(Color.BLACK);
-		showTimeTable.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton showRoom = new JButton("เรียกดู/แก้ไข");
+		showRoom.setForeground(Color.BLACK);
+		showRoom.setFont(new Font("Angsana New", Font.BOLD, 20));
+		
+		JButton saveRoom = new JButton("บันทึกการใช้ห้อง");
+		saveRoom.setForeground(Color.BLACK);
+		saveRoom.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
 		JButton backhome = new JButton("กลับหน้าหลัก");
 		backhome.addActionListener(new ActionListener() {
@@ -79,37 +82,38 @@ public class timetable {
 		backhome.setForeground(Color.BLACK);
 		backhome.setFont(new Font("Angsana New", Font.BOLD, 20));
 		backhome.setBackground(Color.WHITE);
+
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 658, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(229)
-							.addComponent(addTimeTable, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap()
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 658, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(229)
-							.addComponent(showTimeTable, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(229)
-							.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(16, Short.MAX_VALUE))
+							.addGap(241)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(showRoom, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
+								.addComponent(addRoom, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
+								.addComponent(saveRoom, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
+								.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(14, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(79)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(64)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-					.addGap(60)
-					.addComponent(addTimeTable, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-					.addGap(28)
-					.addComponent(showTimeTable, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-					.addGap(60)
+					.addGap(51)
+					.addComponent(addRoom, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(showRoom, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(saveRoom, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addGap(53)
 					.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(88, Short.MAX_VALUE))
+					.addContainerGap(80, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}

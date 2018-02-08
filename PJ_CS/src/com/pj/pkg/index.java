@@ -1,4 +1,4 @@
-package com.srk.pkg;
+package com.pj.pkg;
 
 import java.awt.EventQueue;
 

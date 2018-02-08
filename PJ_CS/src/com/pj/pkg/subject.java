@@ -1,4 +1,4 @@
-package com.srk.pkg;
+package com.pj.pkg;
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -17,18 +17,18 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class room {
+public class subject {
 
 	private JFrame frame;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void room() {
+	public static void subject() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					room window = new room();
+					subject window = new subject();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,7 @@ public class room {
 	/**
 	 * Create the application.
 	 */
-	public room() {
+	public subject() {
 		initialize();
 	}
 
@@ -54,22 +54,18 @@ public class room {
 		frame.setBounds(300, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel label = new JLabel("จัดการห้องเรียน");
+		JLabel label = new JLabel("จัดการข้อมูลรายวิชา");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.BLACK);
 		label.setFont(new Font("Angsana New", Font.BOLD, 26));
 		
-		JButton addRoom = new JButton("เพิ่ม");
-		addRoom.setForeground(Color.BLACK);
-		addRoom.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton addSubject = new JButton("เพิ่ม");
+		addSubject.setForeground(Color.BLACK);
+		addSubject.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
-		JButton showRoom = new JButton("เรียกดู/แก้ไข");
-		showRoom.setForeground(Color.BLACK);
-		showRoom.setFont(new Font("Angsana New", Font.BOLD, 20));
-		
-		JButton saveRoom = new JButton("บันทึกการใช้ห้อง");
-		saveRoom.setForeground(Color.BLACK);
-		saveRoom.setFont(new Font("Angsana New", Font.BOLD, 20));
+		JButton showSubject = new JButton("เรียกดู/แก้ไข");
+		showSubject.setForeground(Color.BLACK);
+		showSubject.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
 		JButton backhome = new JButton("กลับหน้าหลัก");
 		backhome.addActionListener(new ActionListener() {
@@ -82,38 +78,38 @@ public class room {
 		backhome.setForeground(Color.BLACK);
 		backhome.setFont(new Font("Angsana New", Font.BOLD, 20));
 		backhome.setBackground(Color.WHITE);
-
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(label, GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+					.addGap(14))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(241)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(label, GroupLayout.PREFERRED_SIZE, 658, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(241)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(showRoom, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
-								.addComponent(addRoom, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
-								.addComponent(saveRoom, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
-								.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(14, Short.MAX_VALUE))
+								.addComponent(showSubject, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+								.addComponent(backhome, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+							.addGap(240))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(addSubject, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+							.addGap(240))))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(64)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-					.addGap(51)
-					.addComponent(addRoom, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(showRoom, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(saveRoom, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-					.addGap(53)
-					.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(80, Short.MAX_VALUE))
+					.addGap(103)
+					.addComponent(label, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+					.addGap(60)
+					.addComponent(addSubject, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addGap(28)
+					.addComponent(showSubject, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addGap(60)
+					.addComponent(backhome, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+					.addGap(71))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
