@@ -1,58 +1,55 @@
 package com.pj.pkg;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-
 import java.awt.Font;
 import java.awt.Color;
-
-import javax.swing.JButton;
 import javax.swing.SwingConstants;
-
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class student {
+public class student extends JFrame {
 
-	private JFrame frame;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void student() {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					student window = new student();
-					window.frame.setVisible(true);
+					student frame = new student();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-
-	/**
-	 * Create the application.
-	 */
 	public student() {
 		initialize();
 	}
-
 	/**
-	 * Initialize the contents of the frame.
+	 * Create the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/pj/img/large_PSU_logo.gif")));
-		frame.setTitle("ระบบจัดตารางสอนของคณาจารย์ ภาควิชาวิทยาการคอมพิวเตอร์");
-		frame.setBounds(300, 100, 700, 500);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public void initialize() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/pj/img/large_PSU_logo.gif")));
+		setTitle("ระบบจัดตารางสอนของคณาจารย์ ภาควิชาวิทยาการคอมพิวเตอร์");
+		setBounds(300, 100, 700, 500);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
 		
 		JLabel label = new JLabel("ข้อมูลนักศึกษา");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -60,52 +57,58 @@ public class student {
 		label.setFont(new Font("Angsana New", Font.BOLD, 26));
 		
 		JButton addStudent = new JButton("เพิ่ม");
+		addStudent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		addStudent.setForeground(Color.BLACK);
 		addStudent.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
 		JButton showStudent = new JButton("เรียกดู/แก้ไข");
+		showStudent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		showStudent.setForeground(Color.BLACK);
 		showStudent.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
 		JButton backhome = new JButton("กลับหน้าหลัก");
-		backhome.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//back index
-				index index = new index();
-				index.main(null);
-			}
-		});
 		backhome.setForeground(Color.BLACK);
 		backhome.setFont(new Font("Angsana New", Font.BOLD, 20));
 		backhome.setBackground(Color.WHITE);
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(label, GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(227)
+							.addComponent(addStudent, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(227)
+							.addComponent(showStudent, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(227)
+							.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(239)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(backhome, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-						.addComponent(showStudent, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-						.addComponent(addStudent, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
-					.addGap(242))
 		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(102)
-					.addComponent(label, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(91, Short.MAX_VALUE)
+					.addGap(87)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addGap(57)
-					.addComponent(addStudent, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addComponent(addStudent, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addGap(29)
-					.addComponent(showStudent, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addComponent(showStudent, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addGap(60)
-					.addComponent(backhome, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-					.addGap(74))
+					.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addGap(75))
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		contentPane.setLayout(gl_contentPane);
 	}
+
 }

@@ -7,12 +7,6 @@ import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
-import cmd.pkg.frame2;
-import cmd.pkg.room;
-import cmd.pkg.student;
-import cmd.pkg.subject;
-import cmd.pkg.timetable;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
@@ -77,8 +71,9 @@ public class index {
 		student.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//action student
-				student stu = new student();
-				stu.student();
+				student student = new student();
+				frame.dispose();	
+				student.setVisible(true);
 			}
 		});
 		
@@ -88,8 +83,9 @@ public class index {
 		subject.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//action subject
-				subject sj = new subject();
-				sj.subject();
+				subject subject = new subject();
+				frame.dispose();	
+				subject.setVisible(true);
 			}
 		});
 		
@@ -99,8 +95,9 @@ public class index {
 		room.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//action room
-				room r = new room();
-				r.room();
+				room room = new room();
+				frame.dispose();	
+				room.setVisible(true);
 			}
 		});
 		
@@ -110,8 +107,9 @@ public class index {
 		timetable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//action timetable
-				timetable tTable = new timetable();
-				tTable.timetable();
+				timetable timetable = new timetable();
+				frame.dispose();	
+				timetable.setVisible(true);
 			}
 		});
 		
