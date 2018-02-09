@@ -90,32 +90,16 @@ public class P_showProfessor extends JFrame {
 		backprofes.setForeground(Color.BLACK);
 		backprofes.setFont(new Font("Angsana New", Font.BOLD, 20));
 		backprofes.setBackground(Color.WHITE);
-		
-	//	JScrollPane scroll = new JScrollPane();   
-		table_showPro = new JTable();
-		table_showPro.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-			}
-		));
-		table_showPro.setFont(new Font("Angsana New", Font.PLAIN, 20));
-	//	scroll.setViewportView(table_showPro);
-	//	scroll.add(table_showPro);
-		
+	
 		JButton btn_searchPro = new JButton("ค้นหา");
 		btn_searchPro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//search
 				try {
-					
 					String quary="select * from Professor";
-					
 					PreparedStatement pst=connection.prepareStatement(quary);
 					ResultSet rs=pst.executeQuery();
 					table_showPro.setModel(DbUtils.resultSetToTableModel(rs));
-					
-					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -124,9 +108,11 @@ public class P_showProfessor extends JFrame {
 		btn_searchPro.setForeground(Color.BLACK);
 		btn_searchPro.setFont(new Font("Angsana New", Font.BOLD, 18));
 		
+		JScrollPane scrollPane = new JScrollPane();
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -135,13 +121,11 @@ public class P_showProfessor extends JFrame {
 							.addGap(269)
 							.addComponent(backprofes, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-					.addGap(35)
-					.addComponent(table_showPro, GroupLayout.PREFERRED_SIZE, 603, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(36, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(560, Short.MAX_VALUE)
-					.addComponent(btn_searchPro, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(37, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 603, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btn_searchPro, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
 					.addGap(44))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -151,12 +135,16 @@ public class P_showProfessor extends JFrame {
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addGap(67)
 					.addComponent(btn_searchPro)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(table_showPro, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(backprofes, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 					.addGap(31))
 		);
+		
+		table_showPro = new JTable();
+		scrollPane.setViewportView(table_showPro);
+		table_showPro.setFont(new Font("Angsana New", Font.PLAIN, 18));
 		contentPane.setLayout(gl_contentPane);
 	}
 }

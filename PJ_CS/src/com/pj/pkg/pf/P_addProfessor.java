@@ -19,11 +19,17 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import net.proteanit.sql.DbUtils;
+
+import com.pj.db.sqliteConnection;
 import com.pj.pkg.index;
 import com.pj.pkg.professor;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class P_addProfessor extends JFrame {
 
@@ -47,7 +53,9 @@ public class P_addProfessor extends JFrame {
 			}
 		});
 	}
-
+	
+	Connection connection=null;
+	
 	public P_addProfessor() {
 		//start
 		initialize();
@@ -56,6 +64,7 @@ public class P_addProfessor extends JFrame {
 	 * Create the frame.
 	 */
 	public void initialize() {
+		connection=sqliteConnection.dbConnection();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/pj/img/large_PSU_logo.gif")));
 		setTitle("ระบบจัดตารางสอนของคณาจารย์ ภาควิชาวิทยาการคอมพิวเตอร์");
@@ -88,9 +97,20 @@ public class P_addProfessor extends JFrame {
 		
 		JButton saveprofes = new JButton("บันทึก");
 		saveprofes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//add
-				
+			public void actionPerformed(ActionEvent arg0) {
+				//save Professor
+				try {
+					String quary="insert into Profesor (pCode,pName) values (?,?)";
+					PreparedStatement pst=connection.prepareStatement(quary);
+					
+					pst.setString(1, textFieldpCode.getText() );
+					ResultSet rs=pst.executeQuery();
+					
+					pst.close();
+					rs.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		saveprofes.setForeground(Color.BLACK);
