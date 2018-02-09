@@ -7,6 +7,12 @@ import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
+import cmd.pkg.frame2;
+import cmd.pkg.room;
+import cmd.pkg.student;
+import cmd.pkg.subject;
+import cmd.pkg.timetable;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
@@ -51,18 +57,20 @@ public class index {
 		frame.setBounds(300, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//button
+		//start button professor
 		JButton professor = new JButton("จัดการอาจารย์");
 		professor.setFont(new Font("Angsana New", Font.BOLD, 26));
 		professor.setForeground(Color.BLACK);
+		
 		professor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//action professor
-				professor profes = new professor();
-				profes.professor();
+				professor professor = new professor();	
+				frame.dispose();	
+				professor.setVisible(true);
 			}
-		});
-		
+		});		//stop button professor
+			
 		JButton student = new JButton("จัดการนักศึกษา");
 		student.setFont(new Font("Angsana New", Font.BOLD, 26));
 		student.setForeground(Color.BLACK);
@@ -139,6 +147,7 @@ public class index {
 		
 		frame.getContentPane().setLayout(groupLayout);
 	}
+
 
 
 }

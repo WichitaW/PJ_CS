@@ -1,37 +1,39 @@
 package com.pj.pkg;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.awt.Window;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 
-import java.awt.Color;
 import java.awt.Font;
+import java.awt.Color;
 
-import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+public class professor extends JFrame {
 
-public class professor {
-
-	private JFrame frame;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	
-	public static void professor() {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					professor window = new professor();
-					window.frame.setVisible(true);
+					professor frame = new professor();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,46 +41,46 @@ public class professor {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
-
 	public professor() {
+		//start
 		initialize();
 	}
-
 	/**
-	 * Initialize the contents of the frame.
+	 * Create the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/pj/img/large_PSU_logo.gif")));
-		frame.setTitle("ระบบจัดตารางสอนของคณาจารย์ ภาควิชาวิทยาการคอมพิวเตอร์");
-		frame.setBounds(300, 100, 700, 500);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public void initialize() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(300, 100, 700, 500);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/pj/img/large_PSU_logo.gif")));
+		setTitle("ระบบจัดตารางสอนของคณาจารย์ ภาควิชาวิทยาการคอมพิวเตอร์");
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
 		
-		JLabel lblNewLabel = new JLabel("ข้อมูลอาจารย์");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Angsana New", Font.BOLD, 26));
-		lblNewLabel.setForeground(Color.BLACK);
+		JLabel label = new JLabel("ข้อมูลอาจารย์");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setForeground(Color.BLACK);
+		label.setFont(new Font("Angsana New", Font.BOLD, 26));
 		
 		JButton addPro = new JButton("เพิ่มอาจารย์");
 		addPro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//page addProfessor
-				P_addProfessor addPro = new P_addProfessor();
-				addPro.addProfessor();
+				P_addProfessor P_addProfessor = new P_addProfessor();
+				dispose();
+				P_addProfessor.setVisible(true);
 			}
 		});
-		addPro.setFont(new Font("Angsana New", Font.BOLD, 20));
 		addPro.setForeground(Color.BLACK);
+		addPro.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
 		JButton showPro = new JButton("เรียกดู/แก้ไข อาจารย์");
 		showPro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//page showProfessor
-				P_showProfessor showPro = new P_showProfessor();
-				showPro.showProfessor();
+				P_showProfessor P_showProfessor = new P_showProfessor();
+				dispose();
+				P_showProfessor.setVisible(true);
 			}
 		});
 		showPro.setForeground(Color.BLACK);
@@ -88,8 +90,9 @@ public class professor {
 		addTimePro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//page addTimeProfessor
-				P_addTimeProfessor showPro = new P_addTimeProfessor();
-				showPro.addTimeProfessor();
+				P_addTimeProfessor P_addTimeProfessor = new P_addTimeProfessor();
+				dispose();
+				P_addTimeProfessor.setVisible(true);
 			}
 		});
 		addTimePro.setForeground(Color.BLACK);
@@ -99,8 +102,9 @@ public class professor {
 		showTimePro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//page showTimeProfessor
-				P_showTimeProfessor showPro = new P_showTimeProfessor();
-				showPro.showTimeProfessor();
+				P_showTimeProfessor P_showTimeProfessor = new P_showTimeProfessor();
+				dispose();
+				P_showTimeProfessor.setVisible(true);
 			}
 		});
 		showTimePro.setForeground(Color.BLACK);
@@ -111,39 +115,43 @@ public class professor {
 			public void actionPerformed(ActionEvent e) {
 				//back index
 				index index = new index();
+				dispose();
 				index.main(null);
 			}
 		});
-		backhome.setBackground(Color.WHITE);
 		backhome.setForeground(Color.BLACK);
 		backhome.setFont(new Font("Angsana New", Font.BOLD, 20));
-		
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
+		backhome.setBackground(Color.WHITE);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
-					.addContainerGap())
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-					.addGap(238)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(addPro, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-							.addGap(243))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(backhome, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-								.addComponent(showTimePro, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-								.addComponent(addTimePro, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-								.addComponent(showPro, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
-							.addGap(243))))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(226)
+							.addComponent(addPro, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(226)
+							.addComponent(showPro, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(226)
+							.addComponent(addTimePro, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(226)
+							.addComponent(showTimePro, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(226)
+							.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(48)
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(49, Short.MAX_VALUE)
+					.addGap(39)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addGap(46)
 					.addComponent(addPro, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
@@ -151,12 +159,11 @@ public class professor {
 					.addGap(18)
 					.addComponent(addTimePro, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(showTimePro, GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+					.addComponent(showTimePro, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 					.addGap(51)
-					.addComponent(backhome, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(42))
+					.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addGap(31))
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		contentPane.setLayout(gl_contentPane);
 	}
-
 }

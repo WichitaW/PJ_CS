@@ -1,102 +1,101 @@
 package com.pj.pkg;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 
-import java.awt.Color;
 import java.awt.Font;
+import java.awt.Color;
 
-import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+public class P_showTimeProfessor extends JFrame {
 
-public class P_showTimeProfessor {
-
-	private JFrame frame;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	
-	public static void showTimeProfessor() {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					P_showTimeProfessor window = new P_showTimeProfessor();
-					window.frame.setVisible(true);
+					P_showTimeProfessor frame = new P_showTimeProfessor();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-
-	/**
-	 * Create the application.
-	 */
-
-	public P_showTimeProfessor() {
+	public P_showTimeProfessor()  {
 		initialize();
 	}
-
 	/**
-	 * Initialize the contents of the frame.
+	 * Create the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/pj/img/large_PSU_logo.gif")));
-		frame.setTitle("ระบบจัดตารางสอนของคณาจารย์ ภาควิชาวิทยาการคอมพิวเตอร์");
-		frame.setBounds(300, 100, 700, 500);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public void initialize() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/pj/img/large_PSU_logo.gif")));
+		setTitle("ระบบจัดตารางสอนของคณาจารย์ ภาควิชาวิทยาการคอมพิวเตอร์");
+		setBounds(300, 100, 700, 500);
 		
-		JLabel lblNewLabel = new JLabel("เรียกดู/แก้ไข เวลาว่าง");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Angsana New", Font.BOLD, 26));
-		lblNewLabel.setForeground(Color.BLACK);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
 		
-		JButton backprofes = new JButton("กลับ");
-		backprofes.addActionListener(new ActionListener() {
+		JLabel label = new JLabel("เรียกดู/แก้ไข เวลาว่าง");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setForeground(Color.BLACK);
+		label.setFont(new Font("Angsana New", Font.BOLD, 26));
+		
+		JButton button = new JButton("กลับ");
+		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//back professor
-				professor profes = new professor();
-				profes.professor();
+				//close
+				professor professor = new professor();	
+				dispose();	
+				professor.setVisible(true);
 			}
 		});
-		backprofes.setBackground(Color.WHITE);
-		backprofes.setForeground(Color.BLACK);
-		backprofes.setFont(new Font("Angsana New", Font.BOLD, 20));
-		
-		
-		
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+		button.setForeground(Color.BLACK);
+		button.setFont(new Font("Angsana New", Font.BOLD, 20));
+		button.setBackground(Color.WHITE);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(269)
+							.addComponent(button, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(281)
-					.addComponent(backprofes, GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-					.addGap(283))
 		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(48)
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(45, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addGap(307)
-					.addComponent(backprofes, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(43))
+					.addComponent(button, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addGap(35))
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		contentPane.setLayout(gl_contentPane);
 	}
+
 }
