@@ -10,11 +10,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class timetable extends JFrame {
 
@@ -64,6 +69,14 @@ public class timetable extends JFrame {
 		button_1.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
 		JButton button_2 = new JButton("กลับหน้าหลัก");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//back index
+				index index = new index();
+				dispose();
+				index.main(null);
+			}
+		});
 		button_2.setForeground(Color.BLACK);
 		button_2.setFont(new Font("Angsana New", Font.BOLD, 20));
 		button_2.setBackground(Color.WHITE);

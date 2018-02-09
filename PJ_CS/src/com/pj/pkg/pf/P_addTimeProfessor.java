@@ -1,4 +1,4 @@
-package com.pj.pkg;
+package com.pj.pkg.pf;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -19,6 +19,9 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import com.pj.pkg.index;
+import com.pj.pkg.professor;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

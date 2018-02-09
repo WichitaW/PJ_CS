@@ -1,4 +1,4 @@
-package com.pj.pkg;
+package com.pj.pkg.pf;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -18,10 +18,13 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import com.pj.pkg.index;
+import com.pj.pkg.professor;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class P_showProfessor extends JFrame {
+public class P_showTimeProfessor extends JFrame {
 
 	private JPanel contentPane;
 
@@ -32,7 +35,7 @@ public class P_showProfessor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					P_showProfessor frame = new P_showProfessor();
+					P_showTimeProfessor frame = new P_showTimeProfessor();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,8 +43,7 @@ public class P_showProfessor extends JFrame {
 			}
 		});
 	}
-	
-	public P_showProfessor()  {
+	public P_showTimeProfessor()  {
 		initialize();
 	}
 	/**
@@ -52,17 +54,18 @@ public class P_showProfessor extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/pj/img/large_PSU_logo.gif")));
 		setTitle("ระบบจัดตารางสอนของคณาจารย์ ภาควิชาวิทยาการคอมพิวเตอร์");
 		setBounds(300, 100, 700, 500);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel label = new JLabel("เรียกดู/แก้ไข อาจารย์");
+		JLabel label = new JLabel("เรียกดู/แก้ไข เวลาว่าง");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.BLACK);
 		label.setFont(new Font("Angsana New", Font.BOLD, 26));
 		
-		JButton backprofes = new JButton("กลับ");
-		backprofes.addActionListener(new ActionListener() {
+		JButton button = new JButton("กลับ");
+		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//close
 				professor professor = new professor();	
@@ -70,9 +73,9 @@ public class P_showProfessor extends JFrame {
 				professor.setVisible(true);
 			}
 		});
-		backprofes.setForeground(Color.BLACK);
-		backprofes.setFont(new Font("Angsana New", Font.BOLD, 20));
-		backprofes.setBackground(Color.WHITE);
+		button.setForeground(Color.BLACK);
+		button.setFont(new Font("Angsana New", Font.BOLD, 20));
+		button.setBackground(Color.WHITE);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -82,18 +85,18 @@ public class P_showProfessor extends JFrame {
 						.addComponent(label, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(269)
-							.addComponent(backprofes, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(button, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(51, Short.MAX_VALUE)
+					.addContainerGap(45, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addGap(307)
-					.addComponent(backprofes, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addGap(31))
+					.addComponent(button, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addGap(35))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

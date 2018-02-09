@@ -18,8 +18,17 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
+import com.pj.db.sqliteConnection;
+import com.pj.pkg.pf.P_addProfessor;
+import com.pj.pkg.pf.P_addTimeProfessor;
+import com.pj.pkg.pf.P_showProfessor;
+import com.pj.pkg.pf.P_showTimeProfessor;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.*;
+
+import javax.swing.*;
 
 public class professor extends JFrame {
 
@@ -40,10 +49,14 @@ public class professor extends JFrame {
 			}
 		});
 	}
-
+	
+	Connection connection=null;
+	
+	
 	public professor() {
 		//start
 		initialize();
+		connection=sqliteConnection.dbConnection();
 	}
 	/**
 	 * Create the frame.

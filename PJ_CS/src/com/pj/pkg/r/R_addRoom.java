@@ -1,4 +1,4 @@
-package com.pj.pkg;
+package com.pj.pkg.r;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
