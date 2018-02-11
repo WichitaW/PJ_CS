@@ -50,13 +50,13 @@ public class professor extends JFrame {
 		});
 	}
 	
-	Connection connection=null;
+
 	
 	
 	public professor() {
 		//start
 		initialize();
-		connection=sqliteConnection.dbConnection();
+		
 	}
 	/**
 	 * Create the frame.
