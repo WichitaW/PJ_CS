@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -100,14 +101,18 @@ public class P_addProfessor extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				//save Professor
 				try {
-					String quary="insert into Profesor (pCode,pName) values (?,?)";
+					String quary="insert into Professor (pCode,pName) values (?,?)";
 					PreparedStatement pst=connection.prepareStatement(quary);
+					pst.setString(1, pCode.getText());
+					pst.setString(2, pName.getText());
 					
-					pst.setString(1, textFieldpCode.getText() );
-					ResultSet rs=pst.executeQuery();
-					
+					pst.execute();
+					JOptionPane.showMessageDialog(null, "Data Saved");
 					pst.close();
-					rs.close();
+					
+					pCode.setText("");
+					pName.setText("");
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

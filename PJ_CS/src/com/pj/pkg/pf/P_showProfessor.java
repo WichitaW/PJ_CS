@@ -96,10 +96,11 @@ public class P_showProfessor extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				//search
 				try {
-					String quary="select * from Professor";
-					PreparedStatement pst=connection.prepareStatement(quary);
-					ResultSet rs=pst.executeQuery();
-					table_showPro.setModel(DbUtils.resultSetToTableModel(rs));
+						String quary="select * from Professor";
+						PreparedStatement pst=connection.prepareStatement(quary);
+						ResultSet rs=pst.executeQuery();
+						table_showPro.setModel(DbUtils.resultSetToTableModel(rs));
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
