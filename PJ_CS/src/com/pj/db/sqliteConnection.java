@@ -12,12 +12,12 @@ public class sqliteConnection {
 			//	SQLite
 		//	Class.forName("org.sqlite.JDBC");
 		//	Connection conn=DriverManager.getConnection("jdbc:sqlite:D:\\wichita\\database\\dbTimeTable.sqlite");
-		//	JOptionPane.showMessageDialog(null, "Connection Successful");172.25.4.163:55367 COMSCI-PC\\SQLSERVER
+		//	JOptionPane.showMessageDialog(null, "Connection Successful");
+		
+			//MySQL
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/dbtimetable", "root", "pjcs");
 			
-			//SQLServer
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			Connection conn=DriverManager.getConnection("jdbc:sqlserver://COMSCI-PC\\SQLSERVER;databaseName=dbTimeTable");
-
 			return conn;
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, e);
