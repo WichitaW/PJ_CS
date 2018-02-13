@@ -171,7 +171,6 @@ public class P_showProfessor extends JFrame {
 		btnsave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {					
-					if(text_pCode!=null && text_pName!=null){
 						String query="insert into professor (pNumber,pCode,pName) values (?,?,?)";
 						PreparedStatement pst=connection.prepareStatement(query);
 						pst.setString(1, text_pNumber.getText());
@@ -185,9 +184,6 @@ public class P_showProfessor extends JFrame {
 						text_pNumber.setText("");
 						text_pCode.setText("");
 						text_pName.setText("");		
-					}else{
-						JOptionPane.showMessageDialog(null, "กรุณากรอกข้อมูลให้ถูกต้อง");
-					}
 				} catch (Exception e) {
 					e.printStackTrace();
 					JOptionPane.showMessageDialog(null, "กรุณากรอกข้อมูลให้ถูกต้อง");

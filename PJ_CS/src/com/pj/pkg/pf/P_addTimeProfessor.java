@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -36,9 +37,9 @@ public class P_addTimeProfessor extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField text_pName;
-	private JTextField text_pDay;
-	private JTextField text_pTime;
 	private JComboBox combo_pCode;
+	private JComboBox combo_Day;
+	private JComboBox combo_Time;
 
 	/**
 	 * Launch the application.
@@ -67,7 +68,6 @@ public class P_addTimeProfessor extends JFrame {
 			while(rs.next()){
 				combo_pCode.addItem(rs.getString("pCode"));
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -99,16 +99,16 @@ public class P_addTimeProfessor extends JFrame {
 		combo_pCode.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					String query="select * from professor where pName=?";
+					String query="select * from professor where pCode=?";
 					PreparedStatement pst=connection.prepareStatement(query);
 					pst.setString(1, (String)combo_pCode.getSelectedItem());
 			
 					ResultSet rs=pst.executeQuery();
 					
 					while(rs.next()){
-						
+						text_pName.setText(rs.getString("pName"));
 					}
-					
+					pst.close();
 				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
@@ -131,27 +131,59 @@ public class P_addTimeProfessor extends JFrame {
 		text_pName.setFont(new Font("Angsana New", Font.BOLD, 16));
 		text_pName.setColumns(10);
 		
-		text_pDay = new JTextField();
-		text_pDay.setFont(new Font("Angsana New", Font.BOLD, 16));
-		text_pDay.setColumns(10);
-		
 		JLabel label_3 = new JLabel("วันว่าง :");
 		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_3.setFont(new Font("Angsana New", Font.PLAIN, 20));
+		
+		String[] dayStrings = { "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์" };
+		combo_Day = new JComboBox(dayStrings);
+		combo_Day.setFont(new Font("Angsana New", Font.BOLD, 16));
+		combo_Day.setBackground(Color.WHITE);
+		combo_Day.setSelectedIndex(0);
+		combo_Day.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+//select Day		
+			}
+		});
+		
 		
 		JLabel label_4 = new JLabel("เวลาว่าง :");
 		label_4.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_4.setFont(new Font("Angsana New", Font.PLAIN, 20));
 		
-		text_pTime = new JTextField();
-		text_pTime.setFont(new Font("Angsana New", Font.BOLD, 16));
-		text_pTime.setColumns(10);
+		String[] timeStrings = { "08.00-09.00", "09.00-10.00", "10.00-11.00", "11.00-12.00", "13.00-14.00", "14.00-15.00", "15.00-16.00", "16.00-17.00" };
+		combo_Time = new JComboBox(timeStrings);
+		combo_Time.setFont(new Font("Angsana New", Font.BOLD, 16));
+		combo_Time.setBackground(Color.WHITE);
+		combo_Time.setSelectedIndex(0);
+		combo_Time.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+//select Time		
+			}
+		});
 		
 		JButton savetimeprofes = new JButton("บันทึก");
 		savetimeprofes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//add
-				
+				try {					
+						String query="insert into professor (pCode,pDay,pTime) values (?,?,?)";
+						PreparedStatement pst=connection.prepareStatement(query);
+			//			pst.setString(1, combo_pCode.getText());
+			//			pst.setString(2, combo_Day.getText());
+			//			pst.setString(3, combo_Time.getText());
+						
+						pst.execute();
+						JOptionPane.showMessageDialog(null, "บันทึกสำเร็จ");
+						pst.close();
+						
+			//			text_pNumber.setText("");
+			//			text_pCode.setText("");
+			//			text_pName.setText("");		
+				} catch (Exception ex) {
+					ex.printStackTrace();
+					JOptionPane.showMessageDialog(null, "กรุณากรอกข้อมูลให้ถูกต้อง");
+				}
 			}
 		});
 		savetimeprofes.setForeground(Color.BLACK);
@@ -170,10 +202,14 @@ public class P_addTimeProfessor extends JFrame {
 		backprofes.setForeground(Color.BLACK);
 		backprofes.setFont(new Font("Angsana New", Font.BOLD, 20));
 		backprofes.setBackground(Color.WHITE);
+		
+		
+		
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(label, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)
@@ -183,30 +219,31 @@ public class P_addTimeProfessor extends JFrame {
 							.addGap(12)
 							.addComponent(combo_pCode, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(198)
-							.addComponent(label_2)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(text_pName, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(204)
-							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
-							.addGap(12)
-							.addComponent(text_pDay, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(204)
-							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
-							.addGap(12)
-							.addComponent(text_pTime, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(204)
 							.addComponent(savetimeprofes, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
 							.addGap(47)
-							.addComponent(backprofes, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(backprofes, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(204)
+								.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(combo_Time, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(204)
+								.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(combo_Day, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+								.addGap(198)
+								.addComponent(label_2)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(text_pName, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(49, Short.MAX_VALUE)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addGap(63)
@@ -223,17 +260,13 @@ public class P_addTimeProfessor extends JFrame {
 							.addGap(18)
 							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
 					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(4)
-							.addComponent(text_pDay, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(combo_Day, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(4)
-							.addComponent(text_pTime, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(combo_Time, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 					.addGap(71)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(savetimeprofes, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
