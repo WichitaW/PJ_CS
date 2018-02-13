@@ -56,6 +56,7 @@ public class P_addProfessor extends JFrame {
 	}
 	
 	Connection connection=null;
+	private JTextField pNumber;
 	
 	public P_addProfessor() {
 		//start
@@ -85,7 +86,7 @@ public class P_addProfessor extends JFrame {
 		pCode.setColumns(10);
 		
 		JLabel label_1 = new JLabel("รหัสอาจารย์ :");
-		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setHorizontalAlignment(SwingConstants.LEFT);
 		label_1.setFont(new Font("Angsana New", Font.PLAIN, 20));
 		
 		JLabel label_2 = new JLabel("ชื่อ - นามสกุล :");
@@ -101,15 +102,17 @@ public class P_addProfessor extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				//save Professor
 				try {
-					String quary="insert into professor (pCode,pName) values (?,?)";
-					PreparedStatement pst=connection.prepareStatement(quary);
-					pst.setString(1, pCode.getText());
-					pst.setString(2, pName.getText());
+					String query="insert into professor (pNumber,pCode,pName) values (?,?,?)";
+					PreparedStatement pst=connection.prepareStatement(query);
+					pst.setString(1, pNumber.getText());
+					pst.setString(2, pCode.getText());
+					pst.setString(3, pName.getText());
 					
 					pst.execute();
 					JOptionPane.showMessageDialog(null, "Data Saved");
 					pst.close();
 					
+					pNumber.setText("");
 					pCode.setText("");
 					pName.setText("");
 					
@@ -134,44 +137,62 @@ public class P_addProfessor extends JFrame {
 		backprofes.setForeground(Color.BLACK);
 		backprofes.setFont(new Font("Angsana New", Font.BOLD, 20));
 		backprofes.setBackground(Color.WHITE);
+		
+		JLabel label_3 = new JLabel("ลำดับ :");
+		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_3.setFont(new Font("Angsana New", Font.PLAIN, 20));
+		
+		pNumber = new JTextField();
+		pNumber.setFont(new Font("Angsana New", Font.BOLD, 16));
+		pNumber.setColumns(10);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(204)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGap(216)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+											.addComponent(label_2)
+											.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE))
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+											.addComponent(pCode, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+											.addComponent(pName, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+											.addComponent(pNumber, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)))
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(8)
+										.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(saveprofes, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
 									.addGap(47)
-									.addComponent(backprofes, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_2))
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(pCode, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
-										.addComponent(pName, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))))))
+									.addComponent(backprofes, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(56, Short.MAX_VALUE)
+					.addGap(73)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-					.addGap(99)
+					.addPreferredGap(ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(pNumber, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+					.addGap(7)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
 						.addComponent(pCode, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-					.addGap(35)
+					.addGap(7)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(pName, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-					.addGap(106)
+					.addGap(99)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(saveprofes, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 						.addComponent(backprofes, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))

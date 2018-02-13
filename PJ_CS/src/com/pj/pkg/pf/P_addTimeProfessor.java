@@ -20,11 +20,17 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import net.proteanit.sql.DbUtils;
+
+import com.pj.db.sqliteConnection;
 import com.pj.pkg.index;
 import com.pj.pkg.professor;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class P_addTimeProfessor extends JFrame {
 
@@ -32,6 +38,7 @@ public class P_addTimeProfessor extends JFrame {
 	private JTextField text_pName;
 	private JTextField text_pDay;
 	private JTextField text_pTime;
+	private JComboBox combo_pCode;
 
 	/**
 	 * Launch the application.
@@ -48,6 +55,24 @@ public class P_addTimeProfessor extends JFrame {
 			}
 		});
 	}
+	
+	Connection connection=null;
+	
+	public void fillComboBox(){
+		try {
+			String query="select * from professor";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+			while(rs.next()){
+				combo_pCode.addItem(rs.getString("pCode"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public P_addTimeProfessor() {
 		//start
 		initialize();
@@ -56,6 +81,7 @@ public class P_addTimeProfessor extends JFrame {
 	 * Create the frame.
 	 */
 	public void initialize() {
+		connection=sqliteConnection.dbConnection();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(index.class.getResource("/com/pj/img/large_PSU_logo.gif")));
 		setTitle("ระบบจัดตารางสอนของคณาจารย์ ภาควิชาวิทยาการคอมพิวเตอร์");
@@ -69,9 +95,29 @@ public class P_addTimeProfessor extends JFrame {
 		label.setForeground(Color.BLACK);
 		label.setFont(new Font("Angsana New", Font.BOLD, 26));
 		
-		JComboBox combo_pCode = new JComboBox();
+		combo_pCode = new JComboBox();
+		combo_pCode.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String query="select * from professor where pName=?";
+					PreparedStatement pst=connection.prepareStatement(query);
+					pst.setString(1, (String)combo_pCode.getSelectedItem());
+			
+					ResultSet rs=pst.executeQuery();
+					
+					while(rs.next()){
+						
+					}
+					
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
 		combo_pCode.setFont(new Font("Angsana New", Font.BOLD, 16));
 		combo_pCode.setBackground(Color.WHITE);
+		contentPane.add(combo_pCode);
+		fillComboBox();
 		
 		JLabel label_1 = new JLabel("รหัสอาจารย์ :");
 		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
