@@ -37,6 +37,9 @@ import net.proteanit.sql.DbUtils;
 
 import javax.swing.table.DefaultTableModel;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 public class P_showProfessor extends JFrame {
 
 	private JPanel contentPane;
@@ -112,7 +115,16 @@ public class P_showProfessor extends JFrame {
 		backprofes.setForeground(Color.BLACK);
 		backprofes.setFont(new Font("Angsana New", Font.BOLD, 20));
 		backprofes.setBackground(Color.WHITE);
-	
+		
+//text number
+		JLabel label_3 = new JLabel("ลำดับ :");
+		label_3.setHorizontalAlignment(SwingConstants.LEFT);
+		label_3.setFont(new Font("Angsana New", Font.PLAIN, 20));
+		
+		text_pNumber = new JTextField();
+		text_pNumber.setFont(new Font("Angsana New", Font.BOLD, 16));
+		text_pNumber.setColumns(10);
+		
 //text code		
 		JLabel label_2 = new JLabel("รหัสอาจารย์ :");
 		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -136,7 +148,6 @@ public class P_showProfessor extends JFrame {
 		btn_searchPro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-						
 						String query="select * from professor";
 						PreparedStatement pst=connection.prepareStatement(query);
 						ResultSet rs=pst.executeQuery();
@@ -246,27 +257,40 @@ public class P_showProfessor extends JFrame {
 		button.setForeground(Color.BLACK);
 		button.setFont(new Font("Angsana New", Font.BOLD, 18));
 		
-//table		
+//table	
 		JScrollPane scrollPane = new JScrollPane();
-				
+		
 		table_showPro = new JTable();
-		table_showPro.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-			}
-		));
 		table_showPro.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table_showPro);
 		table_showPro.setFont(new Font("Angsana New", Font.PLAIN, 18));
 		
-		JLabel label_3 = new JLabel("ลำดับ :");
-		label_3.setHorizontalAlignment(SwingConstants.LEFT);
-		label_3.setFont(new Font("Angsana New", Font.PLAIN, 20));
-		
-		text_pNumber = new JTextField();
-		text_pNumber.setFont(new Font("Angsana New", Font.BOLD, 16));
-		text_pNumber.setColumns(10);
+		table_showPro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					int row=table_showPro.getSelectedRow();
+					String textpNum=(table_showPro.getModel().getValueAt(row, 0)).toString();
+					
+					String query="select * from professor where pNumber='"+textpNum+"' ";
+					
+					PreparedStatement pst=connection.prepareStatement(query);
+			
+					ResultSet rs=pst.executeQuery();
+					
+					while(rs.next()){
+						text_pNumber.setText(rs.getString("pNumber"));
+						text_pCode.setText(rs.getString("pCode"));
+						text_pName.setText(rs.getString("pName"));
+					}
+					pst.close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
+				
+
 		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -295,12 +319,11 @@ public class P_showProfessor extends JFrame {
 								.addComponent(btnsave, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
 								.addComponent(btnupdate, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))))
 					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(button, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(btn_clearsearch, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btn_searchPro, GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)))
-					.addGap(101))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(button, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+						.addComponent(btn_clearsearch, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+						.addComponent(btn_searchPro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(109, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)
@@ -308,7 +331,7 @@ public class P_showProfessor extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(277)
 					.addComponent(backprofes, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(277, Short.MAX_VALUE))
+					.addContainerGap(287, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
