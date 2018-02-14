@@ -137,11 +137,11 @@ public class P_addTimeProfessor extends JFrame {
 		label_3.setFont(new Font("Angsana New", Font.PLAIN, 20));
 
 //Day
-		String[] dayStrings = { "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์" };
+		String[] dayStrings = { "-", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์" };
 		combo_pDay = new JComboBox(dayStrings);
 		combo_pDay.setFont(new Font("Angsana New", Font.BOLD, 16));
 		combo_pDay.setBackground(Color.WHITE);
-		combo_pDay.setModel(new DefaultComboBoxModel(new String[] {"จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์"}));
+		combo_pDay.setModel(new DefaultComboBoxModel(new String[] {"-", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์"}));
 		combo_pDay.setSelectedIndex(0);
 
 		JLabel label_4 = new JLabel("เวลาว่าง :");
@@ -149,11 +149,11 @@ public class P_addTimeProfessor extends JFrame {
 		label_4.setFont(new Font("Angsana New", Font.PLAIN, 20));
 		
 //Time	
-		String[] timeStrings = { "08.00-09.00", "09.00-10.00", "10.00-11.00", "11.00-12.00", "13.00-14.00", "14.00-15.00", "15.00-16.00", "16.00-17.00" };
+		String[] timeStrings = { "-", "08.00-09.00", "09.00-10.00", "10.00-11.00", "11.00-12.00", "13.00-14.00", "14.00-15.00", "15.00-16.00", "16.00-17.00" };
 		combo_pTime = new JComboBox(timeStrings);
 		combo_pTime.setFont(new Font("Angsana New", Font.BOLD, 16));
 		combo_pTime.setBackground(Color.WHITE);
-		combo_pTime.setModel(new DefaultComboBoxModel(new String[] {"08.00-09.00", "09.00-10.00", "10.00-11.00", "11.00-12.00", "13.00-14.00", "14.00-15.00", "15.00-16.00", "16.00-17.00"}));
+		combo_pTime.setModel(new DefaultComboBoxModel(new String[] {"-", "08.00-09.00", "09.00-10.00", "10.00-11.00", "11.00-12.00", "13.00-14.00", "14.00-15.00", "15.00-16.00", "16.00-17.00"}));
 		combo_pTime.setSelectedIndex(0);
 		
 		
