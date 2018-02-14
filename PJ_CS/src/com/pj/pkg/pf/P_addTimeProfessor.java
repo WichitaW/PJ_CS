@@ -102,6 +102,7 @@ public class P_addTimeProfessor extends JFrame {
 				try {
 					String query="select * from professor where pCode=?";
 					PreparedStatement pst=connection.prepareStatement(query);
+					
 					pst.setString(1, (String)combo_pCode.getSelectedItem());
 			
 					ResultSet rs=pst.executeQuery();
@@ -160,25 +161,27 @@ public class P_addTimeProfessor extends JFrame {
 		JButton savetimeprofes = new JButton("บันทึก");
 		savetimeprofes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//save time professor
+//save time professor
 				try {					
-					String query="insert into timeprofessor (pCode,pDay,pTime) values (?,?,?)";
+					String query="insert into timeprofessor (pCode,pName,pDay,pTime) values (?,?,?,?)";
 					PreparedStatement pst=connection.prepareStatement(query);
 
 					pst.setString(1, (String)combo_pCode.getSelectedItem());
 					
+					pst.setString(2, text_pName.getText());
+					
 					String day=combo_pDay.getSelectedItem().toString();
-					pst.setString(2, day);
+					pst.setString(3, day);
 					
 					String time=combo_pTime.getSelectedItem().toString();
-					pst.setString(3, time);
+					pst.setString(4, time);
 			
 					pst.execute();
 					JOptionPane.showMessageDialog(null, "บันทึกสำเร็จ");
 					pst.close();
 					
 					
-					text_pName.setText("");
+			//		text_pName.setText("");
 					combo_pDay.setSelectedIndex(0);
 					combo_pTime.setSelectedIndex(0);
 	
@@ -187,6 +190,7 @@ public class P_addTimeProfessor extends JFrame {
 					JOptionPane.showMessageDialog(null, "กรุณากรอกข้อมูลให้ถูกต้อง");
 				}
 				fillComboBox();
+				combo_pCode.setSelectedIndex(0);
 				text_pName.setText("");
 			}
 		});
