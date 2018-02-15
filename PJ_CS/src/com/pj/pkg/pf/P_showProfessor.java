@@ -168,10 +168,11 @@ public class P_showProfessor extends JFrame {
 		JButton btn_clearsearch = new JButton("ล้าง");
 		btn_clearsearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 				text_pNumber.setText("");
 				text_pCode.setText("");
 				text_pName.setText("");
-				table_showPro = new JTable();
 			}
 		});
 		btn_clearsearch.setForeground(Color.BLACK);
@@ -259,7 +260,6 @@ public class P_showProfessor extends JFrame {
 		
 //table	
 		JScrollPane scrollPane = new JScrollPane();
-		
 		table_showPro = new JTable();
 		table_showPro.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table_showPro);

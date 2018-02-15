@@ -270,6 +270,11 @@ public class P_showTimeProfessor extends JFrame {
 		btn_search.setFont(new Font("Angsana New", Font.BOLD, 18));
 		
 		JButton btn_clear = new JButton("ล้าง");
+		btn_clear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btn_clear.setForeground(Color.BLACK);
 		btn_clear.setFont(new Font("Angsana New", Font.BOLD, 18));
 		
