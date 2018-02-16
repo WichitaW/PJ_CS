@@ -20,6 +20,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+import com.pj.pkg.pf.P_addProfessor;
+import com.pj.pkg.stu.Stu_addStudent;
+import com.pj.pkg.stu.Stu_showStudent;
+
 public class student extends JFrame {
 
 	private JPanel contentPane;
@@ -59,17 +65,39 @@ public class student extends JFrame {
 		label.setForeground(Color.BLACK);
 		label.setFont(new Font("Angsana New", Font.BOLD, 26));
 		
-		JButton addStudent = new JButton("เพิ่ม");
+		JButton showNameStu = new JButton("เรียกดู/แก้ไข กลุ่มเรียน");
+		showNameStu.setForeground(Color.BLACK);
+		showNameStu.setFont(new Font("Angsana New", Font.BOLD, 20));
+		
+		JButton addNameStu = new JButton("เพิ่มกลุ่มเรียน");
+		addNameStu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		addNameStu.setForeground(Color.BLACK);
+		addNameStu.setFont(new Font("Angsana New", Font.BOLD, 20));
+		
+		
+		JButton addStudent = new JButton("เพิ่มข้อมูลนักศึกษา");
 		addStudent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//page addStu
+				Stu_addStudent Stu_addStudent = new Stu_addStudent();
+				dispose();
+				Stu_addStudent.setVisible(true);
 			}
 		});
 		addStudent.setForeground(Color.BLACK);
 		addStudent.setFont(new Font("Angsana New", Font.BOLD, 20));
 		
-		JButton showStudent = new JButton("เรียกดู/แก้ไข");
+		JButton showStudent = new JButton("เรียกดู/แก้ไข ข้อมูลนักศึกษา");
 		showStudent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//page showStu
+				Stu_showStudent Stu_showStudent = new Stu_showStudent();
+				dispose();
+				Stu_showStudent.setVisible(true);
 			}
 		});
 		showStudent.setForeground(Color.BLACK);
@@ -87,37 +115,41 @@ public class student extends JFrame {
 		backhome.setForeground(Color.BLACK);
 		backhome.setFont(new Font("Angsana New", Font.BOLD, 20));
 		backhome.setBackground(Color.WHITE);
+		
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(239, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(227)
-							.addComponent(addStudent, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(227)
-							.addComponent(showStudent, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(227)
-							.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
+						.addComponent(addStudent, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
+						.addComponent(showStudent, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
+						.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
+						.addComponent(addNameStu, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
+						.addComponent(showNameStu, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE))
+					.addGap(232))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 660, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(91, Short.MAX_VALUE)
-					.addGap(87)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(80, Short.MAX_VALUE)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-					.addGap(57)
+					.addGap(37)
+					.addComponent(addNameStu, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(showNameStu, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(addStudent, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-					.addGap(29)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(showStudent, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-					.addGap(60)
+					.addGap(48)
 					.addComponent(backhome, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addGap(75))
+					.addGap(53))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
