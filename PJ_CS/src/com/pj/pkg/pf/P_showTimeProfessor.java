@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -185,6 +186,7 @@ public class P_showTimeProfessor extends JFrame {
 					ex.printStackTrace();
 					JOptionPane.showMessageDialog(null, "กรุณากรอกข้อมูลให้ถูกต้อง");
 				}
+				refreshTable();
 				fillComboBox();
 				combo_code.setSelectedIndex(0);
 				text_name.setText("");
@@ -226,7 +228,7 @@ public class P_showTimeProfessor extends JFrame {
 		btn_delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					String query="delete from professor where no='"+text_num.getText()+"' ";
+					String query="delete from timeprofessor where no='"+text_num.getText()+"' ";
 					PreparedStatement pst=connection.prepareStatement(query);
 						
 					pst.execute();
@@ -272,7 +274,12 @@ public class P_showTimeProfessor extends JFrame {
 		JButton btn_clear = new JButton("ล้าง");
 		btn_clear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				table_showtime.setModel(new DefaultTableModel());
+				text_num.setText("");
+				combo_code.setSelectedIndex(0);
+				text_name.setText("");
+				combo_day.setSelectedIndex(0);
+				combo_time.setSelectedIndex(0);
 			}
 		});
 		btn_clear.setForeground(Color.BLACK);

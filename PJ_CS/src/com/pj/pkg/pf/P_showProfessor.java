@@ -168,8 +168,7 @@ public class P_showProfessor extends JFrame {
 		JButton btn_clearsearch = new JButton("ล้าง");
 		btn_clearsearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				table_showPro.setModel(new DefaultTableModel());
 				text_pNumber.setText("");
 				text_pCode.setText("");
 				text_pName.setText("");
